@@ -62,7 +62,7 @@ Include: software-properties-common
     cd relion
     mkdir build
     cd build
-    sudo mkdir /usr/local/relion
+    mkdir /usr/local/relion
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local/relion
     make -j4
     make install
