@@ -57,7 +57,7 @@ Include: software-properties-common
     apt install -y libc-ares-dev libcudnn7 libnccl2 libcudnn7-dev  
 
     # Kickoff Relion Installation - https://github.com/3dem/relion
-    apt install cmake build-essential mpi-default-bin mpi-default-dev libfftw3-dev git
+    apt install -y cmake build-essential mpi-default-bin mpi-default-dev libfftw3-dev git
     git clone https://github.com/3dem/relion.git
     cd relion
     mkdir build
