@@ -25,6 +25,9 @@ Include: software-properties-common
     export PATH="/usr/local/cuda/bin:$PATH"
     export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     export CUDA_HOME="/usr/local/cuda"
+
+    # Build 
+    export TMP_BUILD_DIR="/opt/installs"
      
 %post -c /bin/bash
 
@@ -44,14 +47,17 @@ Include: software-properties-common
     apt update -y
     apt install -y build-essential wget python3-pip apt-utils curl expect
     
+    # Create relevant build directories
+    mkdir -p $TMP_BUILD_DIR
+    
     # Download NVIDIA Cuda and begin install
-    wget -nv https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/${CUDA_FILE}
-    chmod +x ${CUDA_FILE}
-    ./${CUDA_FILE} --toolkit --silent --no-drm --no-man-page --override
+    wget -O $TMP_BUILD_DIR/${CUDA_FILE} -nv https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/${CUDA_FILE}
+    chmod +x $TMP_BUILD_DIR/${CUDA_FILE}
+    ./$TMP_BUILD_DIR/${CUDA_FILE} --toolkit --silent --no-drm --no-man-page --override
    
     # Download and install Nvidia Cudnn 7 and nccl2
-    wget -nv ${NVIDIA_DEV_URL}/machine-learning/repos/ubuntu1804/x86_64/${ML_REPO_FILE}
-    dpkg -i ${ML_REPO_FILE}
+    wget -O $TMP_BUILD_DIR/${ML_REPO_FILE} -nv ${NVIDIA_DEV_URL}/machine-learning/repos/ubuntu1804/x86_64/${ML_REPO_FILE}
+    dpkg -i $TMP_BUILD_DIR/${ML_REPO_FILE}
     apt-key adv --fetch-keys ${NVIDIA_DEV_URL}/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
     apt update -y 
     apt install -y libc-ares-dev libcudnn7 libnccl2 libcudnn7-dev  
@@ -67,14 +73,13 @@ Include: software-properties-common
     make -j4
     make install
     
-
     # Clean Up 
     cd
     apt clean
     apt autoclean
     apt autoremove -y 
-    rm ${CUDA_FILE}
-    rm ${ML_REPO_FILE}
+    rm $TMP_BUILD_DIR/${CUDA_FILE}
+    rm $TMP_BUILD_DIR/${ML_REPO_FILE}
 
 %help 
     This is a Relion v3.0 container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
