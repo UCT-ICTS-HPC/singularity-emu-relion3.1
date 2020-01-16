@@ -66,8 +66,10 @@ Include: software-properties-common
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local/relion ..
     make -j4
     make install
+    
 
     # Clean Up 
+    cd
     apt clean
     apt autoclean
     apt autoremove -y 
