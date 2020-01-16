@@ -24,7 +24,7 @@ node('gpu') {
 
     stage('Container Cleanup') {
       // Cleaning up unwanted files from the container.
-      sh "$SINGULARITY_BIN cache clean --name $CONTAINER_DIR/$CONTAINER_NAME-$APP_VER-$BUILD_NUMBER"
+      sh "$SINGULARITY_BIN cache clean -f --name $CONTAINER_DIR/$CONTAINER_NAME-$APP_VER-$BUILD_NUMBER"
     }
 
     stage('Running Tests') {
