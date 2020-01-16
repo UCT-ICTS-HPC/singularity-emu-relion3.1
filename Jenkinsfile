@@ -1,11 +1,11 @@
 // Environment Variables
 env.SW_LOCATION = '/opt/exp_soft/singularity-containers/relion'
 env.CONTAINER_NAME = 'relion-gpu'
-env.CONTAINER_FMT = '.sif'
+env.CONTAINER_FMT = 'sif'
 env.CONTAINER_DEF = 'relion-gpu-build.def'
 env.CONTAINER_DIR = 'container'
 env.TF_VER = 'v3'
-env.SINGULARITY_BIN = '/usr/bin/singularity'
+env.SINGULARITY_BIN = '/usr/bin/sngularity'
 
 // Define the Software Pipeline
 node('gpu') {
@@ -36,7 +36,7 @@ node('gpu') {
       // Make application available to HPC users 
       sh "cp $CONTAINER_DIR/$TF_VER-$CONTAINER_NAME-$BUILD_NUMBER $SW_LOCATION"
       dir(SW_LOCATION) {
-         sh "ln -sf $SW_LOCATION/$TF_VER-$CONTAINER_NAME-$BUILD_NUMBER tensorflow-$TF_VER-gpu.sif"
+         sh "ln -sf $SW_LOCATION/$TF_VER-$CONTAINER_NAME-$BUILD_NUMBER $CONTAINER_NAME-$TF_VER.$CONTAINER_FMT"
       }
       echo "Generating software environment module file"
     }   
