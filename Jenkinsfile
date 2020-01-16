@@ -5,7 +5,7 @@ env.CONTAINER_FMT = 'sif'
 env.CONTAINER_DEF = 'relion-gpu-build.def'
 env.CONTAINER_DIR = 'container'
 env.TF_VER = 'v3'
-env.SINGULARITY_BIN = '/usr/bin/sngularity'
+env.SINGULARITY_BIN = '/usr/bin/singularity'
 
 // Define the Software Pipeline
 node('gpu') {
