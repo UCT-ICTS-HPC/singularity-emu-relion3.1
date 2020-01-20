@@ -28,6 +28,9 @@ Include: software-properties-common
 
     # Build 
     export TMP_BUILD_DIR="/opt/installs"
+
+    # Relion Path 
+    export PATH="/usr/local/relion/bin:$PATH"
      
 %post -c /bin/bash
 
