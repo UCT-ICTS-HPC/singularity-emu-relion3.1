@@ -66,6 +66,7 @@ Include: software-properties-common
     apt install -y cmake build-essential mpi-default-bin mpi-default-dev libfftw3-dev git libxmu-dev
     git clone https://github.com/3dem/relion.git
     cd relion
+    git checkout ver3.1
     mkdir build
     cd build
     mkdir -p /usr/local/relion
