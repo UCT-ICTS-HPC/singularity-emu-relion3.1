@@ -88,7 +88,6 @@ Include: software-properties-common
 %help 
     This is a Relion v3.0 container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
 
-
 %test
     # The following tests will be used to test the functionality of the container build
     # and the results fed into the CI Jenkins platform
