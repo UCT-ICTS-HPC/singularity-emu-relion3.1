@@ -31,6 +31,7 @@ Include: software-properties-common
 
     # Relion Path 
     export PATH="/usr/local/relion/bin:$PATH"
+    declare -r RELIONVER=ver3.1
      
 %post -c /bin/bash
 
@@ -69,7 +70,7 @@ Include: software-properties-common
     apt install -y cmake build-essential mpi-default-bin mpi-default-dev libfftw3-dev git libxmu-dev libfltk1.3 libfltk1.3-compat-headers libfltk1.3-dev libtiff-dev libtiff-doc libtiff-tools
     git clone https://github.com/3dem/relion.git
     cd relion
-    git checkout ver3.1
+    git checkout $RELIONVER
     mkdir build
     cd build
     mkdir -p /usr/local/relion
@@ -86,7 +87,7 @@ Include: software-properties-common
     rm $TMP_BUILD_DIR/${ML_REPO_FILE}
 
 %help 
-    This is a Relion v3.0 container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
+    This is a Relion  container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
 
 %test
     # The following tests will be used to test the functionality of the container build
