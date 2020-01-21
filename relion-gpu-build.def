@@ -48,7 +48,7 @@ Include: software-properties-common
     # Update Ubuntu Cache and begin install
     apt-add-repository universe
     apt update -y
-    apt install -y build-essential wget python3-pip apt-utils curl expect pkg-config libxft2 libxft-dev
+    apt install -y build-essential wget python3-pip apt-utils curl expect pkg-config libxft2 libxft-dev man
     
     # Create relevant build directories
     mkdir -p $TMP_BUILD_DIR
