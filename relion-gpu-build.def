@@ -70,7 +70,6 @@ Include: software-properties-common
     git clone https://github.com/3dem/relion.git
     cd relion
     git checkout ver3.1
-    git pull 
     mkdir build
     cd build
     mkdir -p /usr/local/relion
