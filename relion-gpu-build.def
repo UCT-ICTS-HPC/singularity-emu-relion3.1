@@ -29,8 +29,9 @@ Include: software-properties-common
     # Build 
     export TMP_BUILD_DIR="/opt/installs"
 
-    # Relion Path 
+    # Relion
     export PATH="/usr/local/relion/bin:$PATH"
+    declare -r RELION=relion
     declare -r RELIONVER=ver3.1
      
 %post -c /bin/bash
@@ -86,8 +87,11 @@ Include: software-properties-common
     rm $TMP_BUILD_DIR/${CUDA_FILE}
     rm $TMP_BUILD_DIR/${ML_REPO_FILE}
 
+    # Generate module file 
+
+
 %help 
-    This is a Relion  container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
+    This is a Relion $RELIONVER container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
 
 %test
     # The following tests will be used to test the functionality of the container build
