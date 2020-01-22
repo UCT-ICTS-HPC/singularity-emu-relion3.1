@@ -96,8 +96,7 @@ Include: software-properties-common
 %test
     # The following tests will be used to test the functionality of the container build
     # and the results fed into the CI Jenkins platform
-    set -e 
-    relion_import --version
+    set -e
     nvidia-smi -L
      if [ $? -eq 0 ]
     then
