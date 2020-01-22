@@ -56,8 +56,8 @@ set-alias relion "singularity exec -B /scratch:/scratch \$basepath/relion/\$APP_
 set modname     [module-info name]
 set modmode     [module-info mode]
 
-prepend-path PATH \$basepath'''
-EOF
+prepend-path PATH \$basepath
+EOF '''
      }   
 }
 
