@@ -87,9 +87,6 @@ Include: software-properties-common
     rm $TMP_BUILD_DIR/${CUDA_FILE}
     rm $TMP_BUILD_DIR/${ML_REPO_FILE}
 
-    # Generate module file 
-
-
 %help 
     This is a Relion $RELIONVER container. It includes the NVIDIA CUDA toolkit but not the NVIDIA CUDA drivers. 
 
