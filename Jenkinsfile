@@ -39,7 +39,9 @@ node('gpu') {
          sh "ln -sf $SW_LOCATION/$APP_VER-$CONTAINER_NAME-$BUILD_NUMBER.$CONTAINER_FMT $CONTAINER_NAME-$APP_VER.$CONTAINER_FMT"
       }
       echo "Generating software environment module file"
-sh label: '', script: 'cat << EOF > relionv3.1.module
+sh label: '', script: '''
+(
+cat <<relionv3.1.module
 #%Module######################################################################
 ##
 ##     Relion 
@@ -48,7 +50,6 @@ proc ModulesHelp { } {
     puts stderr "Sets up the paths you need to run Relion Container"
 }
 
-set sys        [uname sysname]
 set base       /opt/exp_soft/singularity-containers
 set basepath   \$base
 
@@ -56,7 +57,8 @@ set-alias relion "singularity exec -B /scratch:/scratch \$basepath/relion/relion
 set modname     [module-info name]
 set modmode     [module-info mode]
 
-prepend-path PATH \$basepath'
+prepend-path PATH \$basepath
+)'''
     }   
 }
 
