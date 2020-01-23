@@ -41,7 +41,7 @@ node('gpu') {
       echo "Generating software environment module file"
 sh label: '', script: '''
 (
-cat <<relionv3.1.module
+cat <<MODULE_FILE
 #%Module######################################################################
 ##
 ##     Relion 
@@ -58,7 +58,9 @@ set modname     [module-info name]
 set modmode     [module-info mode]
 
 prepend-path PATH \$basepath
-) > relionv3.1.module'''
+MODULE_FILE
+) > relionv3.1.module
+'''
     }   
 }
 
