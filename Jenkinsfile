@@ -58,7 +58,7 @@ set modname     [module-info name]
 set modmode     [module-info mode]
 
 prepend-path PATH \$basepath
-)'''
+) > relionv3.1.module'''
     }   
 }
 
